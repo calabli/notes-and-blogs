@@ -515,18 +515,24 @@ public class TranslatorAction extends AnAction {
 ```
 
 此时运行项目，首先配置百度翻译开放接口的APPID和密钥，然后随便打开一个项目划词翻译（右键触发或者快捷键触发）：
+
 ![img_13.png](img_13.png)
+
 翻译功能
 
 可以得到如下的结果通知：
+
 ![img_14.png](img_14.png)
 
 如果没有配置APPID和密钥，直接进行翻译会导致如下的消息通知：
+
 ![img_15.png](img_15.png)
 
 若是想把 Action 添加到其他菜单，只需修改 add-to-group 标签的 group-id 属性值，全局搜索 PlatformActions.xml 文件，打开该文件，
 文件中定义了大部分的菜单 group-id 值。
+
 ![img_16.png](img_16.png)
+
 学习资源
 上面的代码演示了配置扩展点的实现及注册，同时也对Action的实现和注册做了实现，唯一存在难点的可能是Swing的使用，不过这不是本课程的重点，
 如果有学习Swing的需要可以参考如下网址：

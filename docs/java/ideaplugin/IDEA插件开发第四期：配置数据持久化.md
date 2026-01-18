@@ -216,12 +216,14 @@ public class TranslatorAction extends AnAction {
 
 项目级别的数据持久化，持久化文件会被保存在每个项目下的 .idea 目录，该文件在项目级别独享，以下是翻译插件的持久化数据文件，每次关闭项目的时候，
 数据会被保存到缓存文件中，下次打开就可以看到缓存的翻译内容。
+
 ![img_18.png](img_18.png)
 
 # 原生工具栏翻译
 
 工具栏拓展点可将我们的插件在工具栏窗口进行展示，使其就像原生的IDEA窗口，在此处，我们可以将翻译结果在侧边工具栏窗口进行展示，实现以下视图效果，
 方便查阅历史翻译结果。
+
 ![img_19.png](img_19.png)
 
 工具栏窗口拓展点接口为 com.intellij.openapi.wm.ToolWindowFactory ，我们实现该接口的 createToolWindowContent 方法，IDE

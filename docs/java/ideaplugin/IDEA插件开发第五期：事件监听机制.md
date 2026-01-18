@@ -74,6 +74,7 @@ Action。Action 使用到 ShowSettingsUtil 工具，ShowSettingsUtil 类是由 I
 而topic是监听事件类型对应的监听接口。
 
 运行插件项目，在新的IDEA窗口中随便打卡一个项目，然后可以得到如下的通知结果：
+
 ![img_21.png](img_21.png)
 
 # 工具栏窗口监听器
@@ -253,7 +254,9 @@ public class TranslatorListenerImpl2 implements TranslatorManagerListener {
 ```
 
 运行插件项目，随便打开一个项目进行划词翻译，可以得到如下的运行结果：
+
 ![img_24.png](img_24.png)
+
 至此，我们已经学习完IDEA中的事件监听，也可以为自己开发的插件创造监听器，提高插件的扩展性。
 
 # 应用监听器
@@ -280,6 +283,7 @@ public class ApplicationListener implements AppLifecycleListener {
 ```
 
 运行插件项目，得到如下的运行结果：
+
 ![img_25.png](img_25.png)
 
 总结一下：应用监听器注册标签是applicationListeners，应用监听器接口是com.intellij.ide.AppLifecycleListener。

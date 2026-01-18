@@ -1,31 +1,38 @@
 # 开发环境
 ## 1、JDK版本（JDK17）
+
 ![img.png](img.png)
 
 2、Gradle版本（Gradle7.6）
+
 ![img_1.png](img_1.png)
 
 3、IDEA开发工具版本（2022.3专业版）
+
 ![img_2.png](img_2.png)
 
 IDEA版本信息
 
 # 项目创建
 得益于IDEA强大的功能使得我们创建一个IDEA插件项目变得非常简单，首先我们需要打开项目管理界面，新建一个项目：
+
 ![img_3.png](img_3.png)
 
 新建项目
 
 点击IDE Plugin可以填写插件项目的相关信息，项目名称填写hello-world-plugin，修改项目本地所在位置，选中
 新建项目类型为Plugin，使用语言为Java语言，同时填写Group信息和选择JDK版本，然后点击Create进行项目的创建。
+
 ![img_4.png](img_4.png)
 
 项目在创建过程中，会下载插件项目对应的依赖插件，主要包括两个：java和org.jetbrains.intellij，
 具体内容可以在项目路径下的build.gradle.kts文件中的plugins标签中查看。初始项目构建完成之后
 出现如下提示代表创建项目成功。
+
 ![img_5.png](img_5.png)
 
 既然插件项目已经创建成功，那么我们接下来看一下项目的文件目录结构，了解各个目录的用处。
+
 ![img_6.png](img_6.png)
 
 Gradle Wrapper解决了什么问题？
@@ -201,9 +208,11 @@ public class HelloWorldAction extends AnAction {
 </idea-plugin>
 ```
 运行插件项目，在新窗口中随便打开一个项目，然后触发快捷键，可以得到如下的通知：
+
 ![img_9.png](img_9.png)
 
 注意因为Windows和Mac键盘存在差异，所以在Mac上绑定上面的快捷键，但是当你按下对应快捷键的时候并不会触发，
 这是因为Control被绑定成了Command，所以按下Command+Shift+9的时候，在Mac上会触发上面的通知信息。
 如果不知道绑定了哪些快捷键，可以在应用偏好设置中搜索KeyMap进行查看。
+
 ![img_10.png](img_10.png)
