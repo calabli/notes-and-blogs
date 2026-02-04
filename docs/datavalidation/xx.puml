@@ -1,0 +1,80 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+package "Core Engine" {
+    class ConfigGuardEngine {
+        - jexl : JexlEngine
+        - fetchers : Map<String, ExternalFetcher>
+        - positionManager : YamlPositionManager
+        - executor : ExecutorService
+        + ConfigGuardEngine()
+        + registerFetcher(name: String, f: ExternalFetcher)
+        + validate(yamlStr: String, rules: List<ValidationRule>): List<ValidationError>
+        - runAsync(root: Map, item: Object, rule: ValidationRule, path: String, errors: List): CompletableFuture
+    }
+
+    class YamlPositionManager {
+        - lineMap : Map<String, Integer>
+        + load(yamlStr: String): Map<String, Object>
+        + getLine(path: String): int
+    }
+}
+
+package "Models" {
+    class ValidationRule {
+        - id : String
+        - level : String
+        - path : String
+        - forEach : boolean
+        - condition : String
+        - expression : String
+        - message : String
+        - fetcher : FetcherConfig
+    }
+
+    class FetcherConfig {
+        - name : String
+        - resultVar : String
+        - params : Map<String, Object>
+    }
+
+    class ValidationError {
+        - id : String
+        - level : String
+        - message : String
+        - line : int
+        - path : String
+        - value : Object
+        + isBlocking(): boolean
+        + toString(): String
+    }
+}
+
+package "Extensions" {
+    interface ExternalFetcher {
+        + fetch(params: Map, context: Map): Object
+    }
+
+    class GenericHttpFetcher {
+        - mapper : ObjectMapper
+        + fetch(params: Map, context: Map): Object
+    }
+
+    class ValidationUtils {
+        + empty(obj: Object): boolean
+        + notEmpty(obj: Object): boolean
+    }
+}
+
+' Relationships
+ConfigGuardEngine o-- YamlPositionManager
+ConfigGuardEngine o-- ExternalFetcher
+ConfigGuardEngine ..> ValidationRule : consumes
+ConfigGuardEngine ..> ValidationError : produces
+ValidationRule *-- FetcherConfig
+GenericHttpFetcher ..|> ExternalFetcher
+ConfigGuardEngine ..> ValidationUtils : uses in JEXL
+
+@enduml
